@@ -8,7 +8,7 @@ import org.junit.Test;
 public class QuickSelectTest {
 	
 	@Test
-	public void partition() {
+	public void partitionWhole() {
 		int size = 15;
 		Random rnd = new Random();
 		int[] ar = new int[size];
@@ -25,6 +25,27 @@ public class QuickSelectTest {
 			Assert.assertTrue(ar[i] >= ar[x]);
 		}
 
+	}
+
+	@Test
+	public void partitionPart() {
+		int size = 15;
+		Random rnd = new Random();
+		int[] ar = new int[size];
+		for (int i = 0; i < size; i++) {
+			ar[i] = rnd.nextInt(1000) - 500;
+		}
+		int start = 5;
+		int end = 12;
+
+		int x = QuickSelect.partition(ar, start, end);
+
+		for (int i = start; i < x; i++) {
+			Assert.assertTrue(ar[i] < ar[x]);
+		}
+		for (int i = x + 1; i < end; i++) {
+			Assert.assertTrue(ar[i] >= ar[x]);
+		}
 	}
 
 	@Test
