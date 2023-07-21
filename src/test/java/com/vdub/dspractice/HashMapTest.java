@@ -37,8 +37,10 @@ public class HashMapTest {
 		HashMap<String, String> map = new HashMap<>(16, 2);
 		map.put(key, "1");
 
+		Assert.assertEquals(1, map.size());
 		Assert.assertTrue(map.remove(key));
 		Assert.assertNull(map.get(key));
+		Assert.assertEquals(0, map.size());
 	}
 
 	@Test
